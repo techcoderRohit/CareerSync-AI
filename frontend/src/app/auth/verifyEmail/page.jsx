@@ -73,7 +73,7 @@ const VerifyEmailPage = () => {
     setLoading(true);
     setError('');
     try {
-      await axios.post('http://localhost:5000/api/auth/forgot-password', { email });
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/auth/forgot-password`, { email });
       toast.success('OTP resent successfully!');
       setTimer(60);
       setCanResend(false);
@@ -100,7 +100,7 @@ const VerifyEmailPage = () => {
 
     setLoading(true);
     try {
-      await axios.post('http://localhost:5000/api/auth/verify-otp', {
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/auth/verify-otp`, {
         email,
         otp: otpValue
       });
@@ -130,7 +130,7 @@ const VerifyEmailPage = () => {
 
     setLoading(true);
     try {
-      await axios.post('http://localhost:5000/api/auth/reset-password', {
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/auth/reset-password`, {
         email,
         newPassword
       });

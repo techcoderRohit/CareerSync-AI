@@ -21,7 +21,7 @@ export default function JobsPage() {
       const token = localStorage.getItem('token');
       if (!token) return;
 
-      const res = await axios.get('http://localhost:5000/api/applications/history', {
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/applications/history`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setApplications(res.data.applications || []);

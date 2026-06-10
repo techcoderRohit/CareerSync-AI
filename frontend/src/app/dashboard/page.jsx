@@ -24,7 +24,7 @@ export default function DashboardOverview() {
 
         const token = localStorage.getItem('token');
         if (token) {
-          const res = await axios.get('http://localhost:5000/api/dashboard/overview', {
+          const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/dashboard/overview`, {
             headers: { Authorization: `Bearer ${token}` }
           });
           setOverviewData(res.data.overview);

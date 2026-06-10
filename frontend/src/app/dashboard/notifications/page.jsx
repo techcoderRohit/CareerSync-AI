@@ -11,7 +11,7 @@ export default function NotificationsPage() {
     try {
       const token = localStorage.getItem('token');
       if (!token) return;
-      const res = await fetch('http://localhost:5000/api/notifications', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/notifications`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       const data = await res.json();
@@ -33,7 +33,7 @@ export default function NotificationsPage() {
     try {
       const token = localStorage.getItem('token');
       if (!token) return;
-      await fetch('http://localhost:5000/api/notifications/mark-read', {
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/notifications/mark-read`, {
         method: 'PUT',
         headers: { Authorization: `Bearer ${token}` }
       });

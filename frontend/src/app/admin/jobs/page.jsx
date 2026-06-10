@@ -26,7 +26,7 @@ export default function AdminJobsPage() {
 
   const fetchJobs = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/jobs');
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/jobs`);
       const data = await res.json();
       if (data.jobs) {
         setJobs(data.jobs);
@@ -66,7 +66,7 @@ export default function AdminJobsPage() {
     
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch(`http://localhost:5000/api/jobs/${id}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}`}//api/jobs/${id}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       });
@@ -104,7 +104,7 @@ export default function AdminJobsPage() {
         payload.benefits = ["Health insurance", "PTO"];
       }
 
-      const url = editingJobId ? `http://localhost:5000/api/jobs/${editingJobId}` : 'http://localhost:5000/api/jobs';
+      const url = editingJobId ? `${process.env.NEXT_PUBLIC_API_URL || `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}`}//api/jobs/${editingJobId}` : `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/jobs`;
       const method = editingJobId ? 'PUT' : 'POST';
 
       const res = await fetch(url, {

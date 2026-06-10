@@ -24,7 +24,7 @@ export default function AdminNewsletterPage() {
     setSending(true);
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch('http://localhost:5000/api/admin/newsletter', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/admin/newsletter`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

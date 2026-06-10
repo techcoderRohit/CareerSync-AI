@@ -37,7 +37,7 @@ const SignUpPage = () => {
 
     setLoading(true);
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/signup', {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/auth/signup`, {
         fullName: formData.fullName,
         email: formData.email,
         collegeName: formData.collegeName,

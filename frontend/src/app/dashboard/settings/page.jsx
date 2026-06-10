@@ -21,7 +21,7 @@ export default function SettingsPage() {
     setLoading(true);
     try {
       const token = localStorage.getItem('token');
-      await axios.put('http://localhost:5000/api/auth/change-password', passwordData, {
+      await axios.put(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/auth/change-password`, passwordData, {
         headers: { Authorization: `Bearer ${token}` }
       });
       toast.success('Password updated successfully!');
@@ -37,7 +37,7 @@ export default function SettingsPage() {
     if (confirm('Are you absolutely sure you want to delete your account? This action cannot be undone.')) {
       try {
         const token = localStorage.getItem('token');
-        await axios.delete('http://localhost:5000/api/auth/delete-account', {
+        await axios.delete(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/auth/delete-account`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         toast.success('Account deleted successfully');

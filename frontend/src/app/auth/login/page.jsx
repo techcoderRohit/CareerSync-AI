@@ -28,7 +28,7 @@ const LoginPage = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', formData);
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/auth/login`, formData);
 
       // Verify if the user's role matches the selected login portal
       const userRole = response.data.user?.role || 'student';

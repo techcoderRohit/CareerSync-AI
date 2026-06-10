@@ -131,7 +131,7 @@ const ResumeAnalyzer = () => {
           });
         }, 600);
 
-        const response = await axios.post("http://localhost:5000/api/resume/analyze", formData, {
+        const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/resume/analyze`, formData, {
           headers: {
             "Content-Type": "multipart/form-data",
             "Authorization": token ? `Bearer ${token}` : ""

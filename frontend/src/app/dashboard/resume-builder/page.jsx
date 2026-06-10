@@ -29,7 +29,7 @@ export default function ResumeBuilderPage() {
   const fetchData = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch('http://localhost:5000/api/resume/builder', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/resume/builder`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       const data = await res.json();
@@ -54,7 +54,7 @@ export default function ResumeBuilderPage() {
       const skillsArray = skillsInput.split(',').map(s => s.trim()).filter(s => s);
       const dataToSave = { ...resumeData, skills: skillsArray };
 
-      const res = await fetch('http://localhost:5000/api/resume/builder', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/resume/builder`, {
         method: 'PUT',
         headers: { 
           'Content-Type': 'application/json',

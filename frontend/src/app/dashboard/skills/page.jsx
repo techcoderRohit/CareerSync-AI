@@ -26,7 +26,7 @@ export default function SkillsPage() {
     const fetchProfile = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await fetch('http://localhost:5000/api/auth/profile', {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/auth/profile`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         const data = await res.json();
@@ -54,7 +54,7 @@ export default function SkillsPage() {
     try {
       const token = localStorage.getItem('token');
       const skillsString = updatedSkillsArray.join(', ');
-      const res = await fetch('http://localhost:5000/api/auth/skills', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/auth/skills`, {
         method: 'PUT',
         headers: { 
           'Content-Type': 'application/json',

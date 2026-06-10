@@ -52,7 +52,7 @@ export default function AdminSettingsPage() {
         const token = localStorage.getItem('token');
         if (!token) return;
 
-        const res = await fetch('http://localhost:5000/api/admin/settings', {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/admin/settings`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         const data = await res.json();
@@ -72,7 +72,7 @@ export default function AdminSettingsPage() {
             lastName: nameParts.slice(1).join(' ') || '',
             role: 'Super Administrator',
             initial: (data.admin.fullName || 'A').charAt(0).toUpperCase(),
-            profilePicUrl: data.admin.profilePic ? `http://localhost:5000${data.admin.profilePic}` : null
+            profilePicUrl: data.admin.profilePic ? `${process.env.NEXT_PUBLIC_API_URL || `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}`}/${data.admin.profilePic}` : null
           });
         }
       } catch (error) {
@@ -92,7 +92,7 @@ export default function AdminSettingsPage() {
     
     try {
       if (activeTab === 'general') {
-        const res = await fetch('http://localhost:5000/api/admin/settings', {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/admin/settings`, {
           method: 'PUT',
           headers: { 
             'Content-Type': 'application/json',
@@ -114,7 +114,7 @@ export default function AdminSettingsPage() {
           formData.append("profilePic", profile.profilePicFile);
         }
 
-        const res = await fetch('http://localhost:5000/api/admin/profile', {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/admin/profile`, {
           method: 'PUT',
           headers: { 
             Authorization: `Bearer ${token}` 

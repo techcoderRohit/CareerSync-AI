@@ -20,12 +20,12 @@ export default function ResumePage() {
       const token = localStorage.getItem('token');
       if (!token) return;
 
-      const jobsRes = await axios.get('http://localhost:5000/api/jobs', {
+      const jobsRes = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/jobs`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setAvailableJobs(jobsRes.data.jobs || []);
 
-      const appliedRes = await axios.get('http://localhost:5000/api/applications/my-applications', {
+      const appliedRes = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/applications/my-applications`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setAppliedJobIds(appliedRes.data.appliedJobIds || []);
@@ -41,7 +41,7 @@ export default function ResumePage() {
   const handleApply = async (jobId) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:5000/api/applications/apply', { jobId }, {
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/applications/apply`, { jobId }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       toast.success('Successfully applied for the job!');
@@ -81,7 +81,7 @@ export default function ResumePage() {
 
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.post('http://localhost:5000/api/resume/analyze', formData, {
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/resume/analyze`, formData, {
         headers: { 
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data'
@@ -103,7 +103,7 @@ export default function ResumePage() {
     try {
       const token = localStorage.getItem('token');
       // Open the backend HTML wrapper route in a new tab to enforce correct tab title
-      window.open(`http://localhost:5000/api/resume/view/${activeScan._id}?token=${token}`, '_blank');
+      window.open(`${process.env.NEXT_PUBLIC_API_URL || `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}`}//api/resume/view/${activeScan._id}?token=${token}`, '_blank');
     } catch (err) {
       console.error("Error viewing PDF:", err);
       toast.error('Failed to open PDF securely.');

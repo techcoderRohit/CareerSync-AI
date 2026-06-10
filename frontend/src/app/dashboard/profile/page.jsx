@@ -30,7 +30,7 @@ export default function ProfilePage() {
       const token = localStorage.getItem('token');
       if (!token) return;
       
-      const res = await axios.get('http://localhost:5000/api/auth/profile', {
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/auth/profile`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       
@@ -65,7 +65,7 @@ export default function ProfilePage() {
     setLoading(true);
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.put('http://localhost:5000/api/auth/profile', formData, {
+      const res = await axios.put(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/auth/profile`, formData, {
         headers: { Authorization: `Bearer ${token}` }
       });
       
