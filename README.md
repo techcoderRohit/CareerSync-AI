@@ -1,7 +1,5 @@
 # CareerSync AI 🚀
 
-![CareerSync Banner](https://via.placeholder.com/1200x300?text=CareerSync+AI+-+Next-Gen+Placement+Platform)
-
 > **CareerSync AI** is a smart, AI-driven placement and career guidance platform designed to bridge the gap between students, colleges, and recruiters. It offers AI-powered resume analysis, mock interviews, skill assessments, and a seamless job application process.
 
 ---
