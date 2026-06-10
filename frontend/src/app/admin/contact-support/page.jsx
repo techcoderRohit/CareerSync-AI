@@ -46,7 +46,7 @@ export default function ContactSupportPage() {
     try {
       setSending(true);
       const token = localStorage.getItem('token');
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}`}//api/admin/contacts/${selectedContact._id}/reply`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/admin/contacts/${selectedContact._id}/reply`, {
         method: 'PUT',
         headers: { 
           'Content-Type': 'application/json',

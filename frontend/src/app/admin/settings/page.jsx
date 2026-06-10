@@ -72,7 +72,7 @@ export default function AdminSettingsPage() {
             lastName: nameParts.slice(1).join(' ') || '',
             role: 'Super Administrator',
             initial: (data.admin.fullName || 'A').charAt(0).toUpperCase(),
-            profilePicUrl: data.admin.profilePic ? `${process.env.NEXT_PUBLIC_API_URL || `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}`}/${data.admin.profilePic}` : null
+            profilePicUrl: data.admin.profilePic ? `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/${data.admin.profilePic}` : null
           });
         }
       } catch (error) {

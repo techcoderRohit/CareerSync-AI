@@ -103,7 +103,7 @@ export default function ResumePage() {
     try {
       const token = localStorage.getItem('token');
       // Open the backend HTML wrapper route in a new tab to enforce correct tab title
-      window.open(`${process.env.NEXT_PUBLIC_API_URL || `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}`}//api/resume/view/${activeScan._id}?token=${token}`, '_blank');
+      window.open(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/resume/view/${activeScan._id}?token=${token}`, '_blank');
     } catch (err) {
       console.error("Error viewing PDF:", err);
       toast.error('Failed to open PDF securely.');

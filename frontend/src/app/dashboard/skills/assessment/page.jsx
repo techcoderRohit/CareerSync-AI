@@ -39,7 +39,7 @@ export default function AssessmentPage() {
     setQuizLoading(true);
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}`}//api/skills/quiz/${skill}`, {
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/skills/quiz/${skill}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setQuestions(res.data.questions);
@@ -70,7 +70,7 @@ export default function AssessmentPage() {
     setQuizLoading(true);
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL || `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}`}//api/skills/quiz/${selectedQuiz}/submit`, { answers }, {
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/skills/quiz/${selectedQuiz}/submit`, { answers }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setResult(res.data);

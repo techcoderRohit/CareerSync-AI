@@ -73,7 +73,7 @@ export default function AdminTopBar() {
   const handleMarkAsRead = async (id, link) => {
     try {
       const token = localStorage.getItem('token');
-      await fetch(`${process.env.NEXT_PUBLIC_API_URL || `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}`}//api/admin/notifications/${id}/read`, {
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/admin/notifications/${id}/read`, {
         method: 'PUT',
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -193,7 +193,7 @@ export default function AdminTopBar() {
           >
             <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-600 to-emerald-600 flex items-center justify-center text-white font-bold shadow-[0_4px_10px_rgba(13,148,136,0.2)] overflow-hidden border-2 border-white">
               {user?.profilePic ? (
-                <img src={`${process.env.NEXT_PUBLIC_API_URL || `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}`}/${user.profilePic}`} alt="Profile" className="w-full h-full object-cover" />
+                <img src={`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/${user.profilePic}`} alt="Profile" className="w-full h-full object-cover" />
               ) : (
                 (user?.name || user?.fullName || 'A').charAt(0).toUpperCase()
               )}
@@ -214,7 +214,7 @@ export default function AdminTopBar() {
               <div className="p-5 border-b border-slate-100 bg-slate-50 flex flex-col items-center justify-center text-center">
                 <div className="w-14 h-14 rounded-full bg-gradient-to-br from-teal-600 to-emerald-600 flex items-center justify-center text-white font-bold text-xl shadow-lg mb-3 overflow-hidden border-2 border-white">
                   {user?.profilePic ? (
-                    <img src={`${process.env.NEXT_PUBLIC_API_URL || `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}`}/${user.profilePic}`} alt="Profile" className="w-full h-full object-cover" />
+                    <img src={`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/${user.profilePic}`} alt="Profile" className="w-full h-full object-cover" />
                   ) : (
                     (user?.name || user?.fullName || 'A').charAt(0).toUpperCase()
                   )}

@@ -303,7 +303,7 @@ const JobsPage = () => {
                         setDynamicMatchScore(null);
                         const token = localStorage.getItem("token");
                         if (token) {
-                          axios.get(`${process.env.NEXT_PUBLIC_API_URL || `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}`}//api/jobs/${job._id || job.id}/match`, {
+                          axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/jobs/${job._id || job.id}/match`, {
                             headers: { Authorization: `Bearer ${token}` }
                           }).then(res => {
                             setDynamicMatchScore(res.data.matchScore);
