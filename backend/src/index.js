@@ -24,19 +24,10 @@ connectDB(process.env.MONGODB_URL);
 // Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-const allowedOrigins = [
-  "http://localhost:3000",
-  "https://career-sync-ai-chi.vercel.app",
-  process.env.CORS_ORIGIN
-].filter(Boolean);
-
 app.use(cors({
   origin: function (origin, callback) {
-    if (!origin || allowedOrigins.indexOf(origin) !== -1 || allowedOrigins.includes("*")) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
+    // Hamesha origin allow karega (Bulletproof fix for Vercel)
+    callback(null, true);
   },
   credentials: true
 }));
