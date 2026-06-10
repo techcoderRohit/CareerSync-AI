@@ -25,10 +25,7 @@ connectDB(process.env.MONGODB_URL);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors({
-  origin: function (origin, callback) {
-    // Hamesha origin allow karega (Bulletproof fix for Vercel)
-    callback(null, true);
-  },
+  origin: ["http://localhost:3000", "https://career-sync-ai-chi.vercel.app"],
   credentials: true
 }));
 
